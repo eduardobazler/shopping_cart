@@ -102,6 +102,7 @@ function listSaved() {
     li.classList.add('cart__item');
     cartShopping.appendChild(li);
   });
+  totalPrice();
 }
 
 async function setUpListProducts() {
@@ -119,6 +120,21 @@ async function setUpListProducts() {
   });
 }
 
+function emptyCart() {
+  const listParent = document.querySelector('.cart__items');
+  const listItens = document.querySelectorAll('.cart__item');
+  listItens.forEach((item) => {
+    listParent.removeChild(item);
+  });
+  setUpLocalStorage();
+  totalPrice();
+}
+
+const buttonEmptyCart = () => {
+  const button = document.querySelector('.empty-cart');
+  button.addEventListener('click', emptyCart);
+};
+
 window.onload = async () => { 
   await setUpListProducts();
 
@@ -126,5 +142,5 @@ window.onload = async () => {
 
   listSaved();
 
-  totalPrice();
+  buttonEmptyCart();
 };
