@@ -121,8 +121,8 @@ function removeLoading() {
 
 async function setUpListProducts() {
   showLoading();
-  const listOfItem = await fetchProducts();
-
+  const { results: listOfItem } = await fetchProducts('computador');
+  console.log(listOfItem);
   const itemsParent = document.querySelector('.items');
   listOfItem.forEach(({ id, title, thumbnail }) => {
     const objetoItem = {
