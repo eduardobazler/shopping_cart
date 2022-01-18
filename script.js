@@ -79,8 +79,14 @@ const cartShopping = document.querySelector('.cart__items');
 async function detailsOfItem(event) {
   const item = event.path[1];
   const idItem = item.children[0].textContent;
-  const objectItem = await fetchItem(idItem);
-
+  const { id, title, price } = await fetchItem(idItem);
+  
+  const objectItem = {
+    sku: id,
+    name: title,
+    salePrice: price,
+  };
+  
   const itemCreated = createCartItemElement(objectItem);
   itemCreated.addEventListener('click', cartItemClickListener);
   cartShopping.appendChild(itemCreated);
