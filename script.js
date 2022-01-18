@@ -105,7 +105,22 @@ function listSaved() {
   totalPrice();
 }
 
+function showLoading() {
+  const elementParent = document.querySelector('.container');
+  const loading = document.createElement('h1');
+  loading.className = 'loading';
+  loading.innerText = 'carregando...';
+  elementParent.appendChild(loading);
+}
+
+function removeLoading() {
+  const elementParent = document.querySelector('.container');
+  const loading = document.querySelector('.loading');
+  elementParent.removeChild(loading);
+}
+
 async function setUpListProducts() {
+  showLoading();
   const listOfItem = await fetchProducts();
 
   const itemsParent = document.querySelector('.items');
@@ -118,6 +133,7 @@ async function setUpListProducts() {
     const itemChild = createProductItemElement(objetoItem);
     itemsParent.appendChild(itemChild);
   });
+  removeLoading();
 }
 
 function emptyCart() {
