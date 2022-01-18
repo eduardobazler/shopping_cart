@@ -122,10 +122,7 @@ async function setUpListProducts() {
 
 function emptyCart() {
   const listParent = document.querySelector('.cart__items');
-  const listItens = document.querySelectorAll('.cart__item');
-  listItens.forEach((item) => {
-    listParent.removeChild(item);
-  });
+  listParent.innerHTML = '';
   setUpLocalStorage();
   totalPrice();
 }
@@ -135,12 +132,12 @@ const buttonEmptyCart = () => {
   button.addEventListener('click', emptyCart);
 };
 
+buttonEmptyCart();
+
 window.onload = async () => { 
   await setUpListProducts();
 
   addListenerInItems();
 
   listSaved();
-
-  buttonEmptyCart();
 };
