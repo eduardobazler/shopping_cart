@@ -51,7 +51,7 @@ function takePriceOfString(string) {
 
 function totalPrice() {
   const elementPrice = document.querySelector('.total-price');
-  const { listItens } = getSavedCartItems();
+  const { listItens } = JSON.parse(getSavedCartItems());
   const listPriceItens = [];
   listItens.forEach((item) => {
     listPriceItens.push(takePriceOfString(item));
@@ -101,7 +101,7 @@ function addListenerInItems() {
 }
 
 function listSaved() {
-  const { listItens } = getSavedCartItems();
+  const { listItens } = JSON.parse(getSavedCartItems());
   listItens.forEach((item) => {
     const li = document.createElement('li');
     li.textContent = item;
