@@ -40,7 +40,8 @@ function setUpLocalStorage() {
     amount: listaItens.length,
     listItens: listaItens,
   };
-  saveCartItems('itens', JSON.stringify(objectItems));
+
+  saveCartItems(JSON.stringify(objectItems));
 }
 
 function takePriceOfString(string) {
