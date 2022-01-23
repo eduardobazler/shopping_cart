@@ -28,3 +28,20 @@
 .container-main {
   display: flex;
 }
+
+.subtotal {
+  display: flex;
+  align-items: center;
+}
+
+.subtotal p {
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  align-self: flex-end;
+}
+
+.cart__item {
+  list-style: none;
+}

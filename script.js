@@ -17,8 +17,8 @@ function createProductItemElement({ sku, name, image }) {
   section.className = 'item';
 
   section.appendChild(createCustomElement('span', 'item__sku', sku));
-  section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
+  section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createCustomElement('button', 
   'item__add btn btn-primary', 'Adicionar ao carrinho!'));
   return section;
@@ -58,7 +58,7 @@ function totalPrice() {
     listPriceItens.push(takePriceOfString(item));
   });
   const total = listPriceItens.reduce((acc, current) => (acc + current), 0);
-  elementPrice.textContent = total;
+  elementPrice.textContent = total.toFixed(2);
 }
 
 function cartItemClickListener(event) {
@@ -71,7 +71,7 @@ function cartItemClickListener(event) {
 function createCartItemElement({ sku, name, salePrice }) {
   const li = document.createElement('li');
   li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.innerText = `${name} | PRICE: $${salePrice}`;
   li.addEventListener('click', cartItemClickListener);
   return li;
 }
